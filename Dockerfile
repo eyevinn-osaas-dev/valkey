@@ -8,6 +8,7 @@ RUN make
 RUN make install
 
 FROM ubuntu:20.04
+WORKDIR /data
 COPY --from=build /usr/local/bin/ /usr/local/bin/
 COPY --from=build /src/valkey.conf /etc/valkey.conf
 COPY --from=build /src/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
